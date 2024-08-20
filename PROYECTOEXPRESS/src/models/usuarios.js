@@ -1,60 +1,40 @@
-const {Sequelize} = require("../config/database")
-const {DataTypes} = require("sequelize")
+const { sequelize } = require("../config/database");
+const { DataTypes } = require("sequelize");
 
-const usuarios = sequelize.define(
-    "usuarios",
-    {
-        id_usuario: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        }
+const Usuarios = sequelize.define(
+  "usuarios",
+  {
+    uid_usuario: {
+      type: DataTypes.STRING(255),
+      primaryKey: true,
+      allowNull: false,
     },
-    {
-        nombre_completo: {
-            type: DataTypes.STRING(255),
-            allowNull: false,
-            unique:false,
-            defaultValue:"valor por defecto"
-        }
+    nombre_completo: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
     },
-    {
-        correo_electronico: {
-            type: DataTypes.STRING(255),
-            allowNull: false,
-            unique:true
-        }
+    correo_electronico: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: true,
     },
-    {
-        telefono: {
-            type: DataTypes.STRING(20),
-            allowNull: true
-        }
+    telefono: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
     },
-    {
-        direccion: {
-            type: DataTypes.STRING(255),
-            allowNull: true
-        }
+    direccion: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
     },
-    {
-        estado_cuenta: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: true
-        }
+    estado_cuenta: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    {
-        fecha_inicio: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: Sequelize.NOW
-        }
-    },
-    {
-        tableName: "usuarios",
-        timestamps: false
-    }
+  },
+  {
+    tableName: "usuarios",
+    timestamps: false,
+  }
 );
 
-module.export(usuarios)
+module.exports = Usuarios;
