@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", FacturasGet); 
 router.post("/", FacturasPost);
-router.put("/", FacturasPut); 
-router.delete("/", FacturasDelete);
+router.put("/:id_factura", FacturasPut); 
+router.delete("/:id_factura", FacturasDelete);
 
 module.exports = router;

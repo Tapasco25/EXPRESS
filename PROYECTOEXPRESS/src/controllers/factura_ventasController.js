@@ -49,7 +49,7 @@ const FacturasPut = async (req, res) => {
     try {
         const factura = await FacturaVenta.findByPk(id_factura);
         if (!factura) {
-            return res.status(404).json({ message: "Factura no encontrada" });
+            return res.status(400).json({ message: "Factura no encontrada" });
         }
 
         await factura.update({
@@ -73,7 +73,7 @@ const FacturasDelete = async (req, res) => {
     try {
         const factura = await FacturaVenta.findByPk(id_factura);
         if (!factura) {
-            return res.status(404).json({ message: "Factura no encontrada" });
+            return res.status(400).json({ message: "Factura no encontrada" });
         }
 
         await factura.destroy();

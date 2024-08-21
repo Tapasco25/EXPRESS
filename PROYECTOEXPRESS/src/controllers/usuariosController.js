@@ -76,7 +76,7 @@ const UsuariosPut = async (req, res) => {
       const usuario = await Usuario.findByPk(uid_usuario);
   
       if (!usuario) {
-        return res.status(404).json({ message: "Usuario no encontrado" });
+        return res.status(400).json({ message: "Usuario no encontrado" });
       }
   
       await usuario.destroy();

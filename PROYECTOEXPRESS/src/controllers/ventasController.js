@@ -31,5 +31,51 @@ const VentasPost = async (req, res) => {
     }
 };
 
-module.exports = { VentasGet, VentasPost }
+const VentasPut = async (req, res) => {
+    const { id_venta } = req.params;
+    const { id_factura, fecha_venta } = req.body;
+  
+    try {
+      // Buscar la venta por id_venta
+      const venta = await Venta.findByPk(id_venta);
+  
+      if (!venta) {
+        return res.status(400).json({ message: "Venta no encontrada" });
+      }
+  
+      // Actualizar la venta
+      const updatedVenta = await venta.update({
+        id_factura,
+        fecha_venta,
+      });
+  
+      res.status(200).json(updatedVenta);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+  
+  const VentasDelete = async (req, res) => {
+    const { id_venta } = req.params;
+  
+    try {
+      // Buscar la venta por id_venta
+      const venta = await Venta.findByPk(id_venta);
+  
+      if (!venta) {
+        return res.status(400).json({ message: "Venta no encontrada" });
+      }
+  
+      // Eliminar la venta
+      await venta.destroy();
+  
+      res.status(200).send(); // No content
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+  
+
+  module.exports = { VentasGet, VentasPost, VentasPut, VentasDelete};
 
