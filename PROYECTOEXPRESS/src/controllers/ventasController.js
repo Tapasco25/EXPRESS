@@ -13,12 +13,15 @@ const VentasGet = async (req, res) => {
 
 const VentasPost = async (req, res) => {
     const {
+        id_venta,
         id_factura,
-        fecha_venta
+        fecha_venta,
+
     } = req.body; 
 
     try {
         const NewVenta = await Venta.create({
+            id_venta,
             id_factura,
             fecha_venta
         }); 

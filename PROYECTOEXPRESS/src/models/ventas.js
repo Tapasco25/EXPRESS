@@ -15,7 +15,7 @@ const Venta = sequelize.define(
         model: 'factura_ventas', 
         key: 'id_factura', 
       },
-      allowNull: true,
+      allowNull: false,
     },
     fecha_venta: {
       type: DataTypes.DATE,
@@ -23,10 +23,12 @@ const Venta = sequelize.define(
     },
   },
   {
-    tableName: "ventas", 
+    tableName: "ventas",
+    schema: "mi_proyecto",
     timestamps: false, 
   }
 );
 
 module.exports = Venta;
+
 

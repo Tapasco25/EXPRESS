@@ -12,13 +12,15 @@ const CarritoGet = async (req, res) => {
 
 const CarritoPost = async (req, res) => {
     const {
-        estado_carrito,
+        id_carrito,
+        id_producto,
         id_usuario
     } = req.body; 
 
     try {
         const nuevoCarrito = await CarritoCompra.create({
-            estado_carrito,
+            id_carrito,
+            id_producto,
             id_usuario
         }); 
         res.status(200).json(nuevoCarrito); 

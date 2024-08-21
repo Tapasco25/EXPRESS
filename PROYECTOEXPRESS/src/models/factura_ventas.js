@@ -10,8 +10,8 @@ const FacturaVenta = sequelize.define(
       autoIncrement: true,
     },
     estado_factura: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+      type: DataTypes.INTEGER, 
+      allowNull: true,
     },
     fecha_pedido: {
       type: DataTypes.DATE,
@@ -21,8 +21,12 @@ const FacturaVenta = sequelize.define(
       type: DataTypes.STRING(255),
       references: {
         model: 'usuarios', 
-        key: 'uid_usuario', 
+        key: 'uid_usuario',
       },
+      allowNull: true,
+    },
+    id_producto: {
+      type: DataTypes.JSONB,
       allowNull: true,
     },
     precio_total: {
@@ -32,9 +36,9 @@ const FacturaVenta = sequelize.define(
   },
   {
     tableName: "factura_ventas", 
-    timestamps: false,
+    schema: "mi_proyecto",
+    timestamps: false, 
   }
 );
 
 module.exports = FacturaVenta;
-

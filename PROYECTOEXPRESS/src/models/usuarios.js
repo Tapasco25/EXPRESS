@@ -33,6 +33,7 @@ const Usuarios = sequelize.define(
   },
   {
     tableName: "usuarios",
+    schema: "mi_proyecto",
     timestamps: false,
   }
 );

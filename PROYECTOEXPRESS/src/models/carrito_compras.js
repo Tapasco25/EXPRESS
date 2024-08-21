@@ -9,22 +9,23 @@ const CarritoCompra = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    estado_carrito: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+    id_producto: {
+      type: DataTypes.JSONB,
+      allowNull: true,
     },
     id_usuario: {
       type: DataTypes.STRING(255),
-      references: {
-        model: 'usuarios', 
-        key: 'uid_usuario', 
-      },
       allowNull: true,
+      references: {
+        model: 'usuarios',
+        key: 'uid_usuario',
+      },
     },
   },
   {
-    tableName: "carrito_compras", 
-    timestamps: false, 
+    tableName: "carrito_compras",
+    schema: "mi_proyecto",
+    timestamps: false,
   }
 );
 
