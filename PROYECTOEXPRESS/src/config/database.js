@@ -9,7 +9,7 @@ const ConexionDB = () => {
   sequelize
     .sync()
     .then(() => console.log("Conectado ala base de datos"))
-    .catch((err) => console.log("Error al conectar con la base de datos"));
+    .catch((err) => console.log("Error al conectar con la base de datos",err));
 };
 
 module.exports = { ConexionDB, sequelize };
