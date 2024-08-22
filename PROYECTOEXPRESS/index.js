@@ -8,13 +8,22 @@ const routerFacturas = require("./src/routes/facturaVentasRoute");
 const routerCarrito = require("./src/routes/carritoComprasRoute");
 
 const { ConexionDB } = require("./src/config/database");
+const loggerMiddelware = require("./src/middelwares/loggerMiddelware");
 
 ConexionDB();
 
 const app = express();
+
+app.use(cors())
+
+// app.use(cors({
+//   origin: ['https://example.com', 'https://example2.com']
+// }))
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors());
+app.use(loggerMiddelware);
 
 app.use("/usuarios", routerUsuarios);
 app.use("/ventas", routerVentas);
