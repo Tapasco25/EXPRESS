@@ -7,28 +7,25 @@ const Venta = sequelize.define(
     id_venta: {
       type: DataTypes.INTEGER,
       primaryKey: true,
+      allowNull: true,
       autoIncrement: true,
     },
     id_factura: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'factura_ventas', 
-        key: 'id_factura', 
+        model: "factura_ventas",
+        key: "id_factura",
       },
-      allowNull: false,
     },
     fecha_venta: {
       type: DataTypes.DATE,
-      allowNull: false,
     },
   },
   {
     tableName: "ventas",
     schema: "mi_proyecto",
-    timestamps: false, 
+    timestamps: false,
   }
 );
 
 module.exports = Venta;
-
-

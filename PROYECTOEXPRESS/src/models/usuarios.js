@@ -7,28 +7,23 @@ const Usuarios = sequelize.define(
     uid_usuario: {
       type: DataTypes.STRING(255),
       primaryKey: true,
-      allowNull: false,
+      allowNull: true,
     },
     nombre_completo: {
       type: DataTypes.STRING(255),
-      allowNull: false,
     },
     correo_electronico: {
       type: DataTypes.STRING(255),
-      allowNull: false,
       unique: true,
     },
     telefono: {
       type: DataTypes.STRING(20),
-      allowNull: true,
     },
     direccion: {
       type: DataTypes.STRING(255),
-      allowNull: true,
     },
     estado_cuenta: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
   },
   {
