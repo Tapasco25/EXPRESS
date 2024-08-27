@@ -8,7 +8,20 @@ const CarritoGet = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+const CarritoGetByUsuario = async (req, res) => {
+  const { id_usuario } = req.params;
 
+  try {
+    const carrito = await CarritoCompra.findOne({ where: { id_usuario } });
+    if (!carrito) {
+      return res.status(400).json({ message: "Carrito no encontrado" });
+    }
+
+    res.status(200).json(carrito);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
 const CarritoPost = async (req, res) => {
   const { id_carrito, id_producto, id_usuario } = req.body;
 
@@ -60,4 +73,10 @@ const CarritoDelete = async (req, res) => {
   }
 };
 
-module.exports = { CarritoGet, CarritoPost, CarritoPut, CarritoDelete };
+module.exports = {
+  CarritoGet,
+  CarritoPost,
+  CarritoPut,
+  CarritoDelete,
+  CarritoGetByUsuario,
+};
