@@ -6,6 +6,7 @@ const {
   CarritoDelete,
   CarritoGetByUsuario,
 } = require("../controllers/carrito_comprasController");
+// const verifyToken = require("../middelwares/verifyToken");
 
 const router = express.Router();
 

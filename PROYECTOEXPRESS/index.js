@@ -15,15 +15,14 @@ ConexionDB();
 
 const app = express();
 
-app.use(cors())
+app.use(cors());
 
 // app.use(cors({
 //   origin: ['https://example.com', 'https://example2.com']
 // }))
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
-app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 // app.use(loggerMiddelware);
 
 app.use("/usuarios", routerUsuarios);

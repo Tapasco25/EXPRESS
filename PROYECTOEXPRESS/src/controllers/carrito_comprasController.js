@@ -16,6 +16,7 @@ const CarritoGetByUsuario = async (req, res) => {
     if (!carrito) {
       return res.status(400).json({ message: "Carrito no encontrado" });
     }
+    console.log("Carrito encontrado:", carrito);
 
     res.status(200).json(carrito);
   } catch (error) {
@@ -24,6 +25,7 @@ const CarritoGetByUsuario = async (req, res) => {
 };
 const CarritoPost = async (req, res) => {
   const { id_carrito, id_producto, id_usuario } = req.body;
+  console.log(req.body);
 
   try {
     const nuevoCarrito = await CarritoCompra.create({
@@ -40,6 +42,10 @@ const CarritoPost = async (req, res) => {
 const CarritoPut = async (req, res) => {
   const { id_carrito } = req.params;
   const { id_producto, id_usuario } = req.body;
+
+  if (!id_producto || !id_usuario) {
+    return res.status(400).json({ message: "Faltan campos en la solicitud." });
+  }
 
   try {
     const carrito = await CarritoCompra.findByPk(id_carrito);
