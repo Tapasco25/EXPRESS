@@ -30,6 +30,7 @@ app.use("/carrito", routerCarrito);
 app.use("/facturas", routerFacturas);
 app.use("/ventas", routerVentas);
 
+
 app.listen(port, () => {
   console.log(`Ejecutando en http://localhost:${port}`);
 });
