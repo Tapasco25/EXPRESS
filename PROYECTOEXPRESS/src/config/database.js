@@ -9,7 +9,7 @@ const sequelize = new Sequelize("proyecto_final", "nicol", "Javier250282", {
 const ConexionDB = () => {
   sequelize
     .sync()
-    .then(() => console.log("Conectado ala base de datos"))
+    .then(() => console.log("Conectado a la base de datos"))
     .catch((err) => console.log("Error al conectar con la base de datos", err));
 };
 

@@ -43,7 +43,7 @@ const CarritoPut = async (req, res) => {
   const { id_carrito } = req.params;
   const { id_producto, id_usuario } = req.body;
 
-  if (!id_producto || !id_usuario) {
+  if (!id_producto) {
     return res.status(400).json({ message: "Faltan campos en la solicitud." });
   }
 
@@ -54,7 +54,6 @@ const CarritoPut = async (req, res) => {
     }
 
     carrito.id_producto = id_producto;
-    carrito.id_usuario = id_usuario;
 
     await carrito.save();
     res.status(200).json(carrito);
